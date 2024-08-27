@@ -2,6 +2,7 @@ import axios from "axios";
 import "./index.css";
 import { Suspense, useEffect, useState } from "react";
 import { Fixture } from "./Types/Fixture";
+import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
 
 const App = () => {
   const [fixtures, setFixtures] = useState<Fixture[]>([]);
@@ -35,15 +36,14 @@ const App = () => {
   return (
     <>
       <main>
-        <h1>page</h1>
-        <button onClick={fetchFixtures}>get results</button>
+        <button
+          style={{ position: "fixed", left: "5vh", top: "10vh" }}
+          onClick={fetchFixtures}
+        >
+          get results
+        </button>
         <div>
-          {fixtures.length > 1 &&
-            fixtures.map((f, idx) => (
-              <span key={`f_${idx}`}>
-                {f.teams.home.name} vs {f.teams.away.name}
-              </span>
-            ))}
+          {fixtures.length > 1 && <ActiveMatch fixture={fixtures[1]} />}
         </div>
       </main>
     </>
