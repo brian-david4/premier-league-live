@@ -26,4 +26,15 @@
   width: 40vw;
   background-color: black;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.fixture {
+  width: 100%;
+  height: 5vh;
+  border-top: 5px dotted white;
+  display: grid;
+  place-items: center;
 }

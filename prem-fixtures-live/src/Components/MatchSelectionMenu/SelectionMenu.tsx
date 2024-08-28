@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 import { menuAnims } from "./anims";
+import { Fixture } from "../../Types/Fixture";
 
-const SelectionMenu = () => {
+interface MatchSelectionMenuProps {
+  onFixtureClick: (f: number) => void;
+  fixtures: Fixture[];
+}
+
+const SelectionMenu = ({
+  fixtures,
+  onFixtureClick,
+}: MatchSelectionMenuProps) => {
   return (
     <>
       <motion.div
@@ -11,7 +20,19 @@ const SelectionMenu = () => {
         animate="enter"
         exit="exit"
         className={styles.menu}
-      ></motion.div>
+      >
+        {fixtures.map((fixture, idx) => (
+          <div
+            key={`fx_${fixture.fixture.id}_${idx}`}
+            className={styles.fixture}
+            onClick={() => onFixtureClick(fixture.fixture.id)}
+          >
+            {fixture.teams.home.name}
+            vs
+            {fixture.teams.away.name}
+          </div>
+        ))}
+      </motion.div>
     </>
   );
 };

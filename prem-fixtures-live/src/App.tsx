@@ -1,12 +1,19 @@
 import axios from "axios";
 import "./index.css";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Fixture } from "./Types/Fixture";
 import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
 import MatchSelectionMenu from "./Components/MatchSelectionMenu/MatchSelectionMenu";
 
 const App = () => {
   const [fixtures, setFixtures] = useState<Fixture[]>([]);
+  const [activeID, setActiveID] = useState<number | null>(
+    fixtures.length > 1 ? fixtures[0].fixture.id : null
+  );
+
+  useEffect(() => {
+    console.log(activeID);
+  }, [activeID]);
 
   const date = "2024-08-25";
 
@@ -34,10 +41,17 @@ const App = () => {
     }
   };
 
+  const onFixtureClick = (f: number) => {
+    setActiveID(f);
+  };
+
   return (
     <>
       <main style={{ position: "relative" }}>
-        <MatchSelectionMenu />
+        <MatchSelectionMenu
+          onFixtureClick={onFixtureClick}
+          fixtures={fixtures}
+        />
         <button
           style={{ position: "fixed", left: "5vh", top: "10vh" }}
           onClick={fetchFixtures}
@@ -45,7 +59,15 @@ const App = () => {
           get results
         </button>
         <div>
-          {fixtures.length > 1 && <ActiveMatch fixture={fixtures[1]} />}
+          {fixtures.length > 1 && (
+            <ActiveMatch
+              fixture={
+                activeID
+                  ? fixtures.find((fixture) => fixture.fixture.id === activeID)
+                  : fixtures[0]
+              }
+            />
+          )}
         </div>
       </main>
     </>
