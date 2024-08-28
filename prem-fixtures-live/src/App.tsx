@@ -3,6 +3,7 @@ import "./index.css";
 import { Suspense, useEffect, useState } from "react";
 import { Fixture } from "./Types/Fixture";
 import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
+import MatchSelectionMenu from "./Components/MatchSelectionMenu/MatchSelectionMenu";
 
 const App = () => {
   const [fixtures, setFixtures] = useState<Fixture[]>([]);
@@ -35,7 +36,8 @@ const App = () => {
 
   return (
     <>
-      <main>
+      <main style={{ position: "relative" }}>
+        <MatchSelectionMenu />
         <button
           style={{ position: "fixed", left: "5vh", top: "10vh" }}
           onClick={fetchFixtures}

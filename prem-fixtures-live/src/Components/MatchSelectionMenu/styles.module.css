@@ -1,0 +1,29 @@
+.selectBtn {
+  position: absolute;
+  left: 2.5vw;
+  top: 2.5vh;
+  font-size: 0.9rem;
+  z-index: 50;
+  mix-blend-mode: difference;
+  color: white;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+.selectBtn > span {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 500ms var(--in-out-cubic);
+}
+.visible {
+  opacity: 1 !important;
+}
+/* menu styles */
+.menu {
+  position: fixed;
+  left: 0px;
+  top: 0;
+  height: 100vh;
+  width: 40vw;
+  background-color: black;
+  color: white;
+}

@@ -1,5 +1,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 * {
