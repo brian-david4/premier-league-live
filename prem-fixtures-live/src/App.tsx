@@ -10,6 +10,7 @@ const App = () => {
   const [activeID, setActiveID] = useState<number | null>(
     fixtures.length > 1 ? fixtures[0].fixture.id : null
   );
+  const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
     console.log(activeID);
@@ -43,6 +44,7 @@ const App = () => {
 
   const onFixtureClick = (f: number) => {
     setActiveID(f);
+    setMenuActive(!menuActive);
   };
 
   return (
@@ -51,6 +53,8 @@ const App = () => {
         <MatchSelectionMenu
           onFixtureClick={onFixtureClick}
           fixtures={fixtures}
+          setMenuActive={(v) => setMenuActive(v)}
+          menuActive={menuActive}
         />
         <button
           style={{ position: "fixed", left: "5vh", top: "10vh" }}
@@ -59,7 +63,7 @@ const App = () => {
           get results
         </button>
         <div>
-          {fixtures.length > 1 && (
+          {fixtures.length >= 1 && (
             <ActiveMatch
               fixture={
                 activeID

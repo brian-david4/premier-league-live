@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./styles.module.css";
 import SelectionMenu from "./SelectionMenu";
 import { AnimatePresence } from "framer-motion";
@@ -7,13 +6,16 @@ import { Fixture } from "../../Types/Fixture";
 interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
   fixtures: Fixture[];
+  setMenuActive: (v: boolean) => void;
+  menuActive: boolean;
 }
 
 const MatchSelectionMenu = ({
   fixtures,
   onFixtureClick,
+  setMenuActive,
+  menuActive,
 }: MatchSelectionMenuProps) => {
-  const [menuActive, setMenuActive] = useState(false);
   return (
     <>
       <p
