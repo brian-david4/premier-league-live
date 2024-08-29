@@ -17,6 +17,9 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
         animate="enter"
         className={styles.match}
       >
+        <h4 className={styles.venue}>
+          {fixture ? `${fixture?.fixture.venue.name}` : ""}
+        </h4>
         <TeamScore team={fixture?.teams.home} goals={fixture?.goals.home} />
         <TeamScore team={fixture?.teams.away} goals={fixture?.goals.away} />
       </motion.div>

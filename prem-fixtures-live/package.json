@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "axios": "^1.7.5",
+    "colord": "^2.9.3",
     "framer-motion": "^11.3.30",
+    "palette-from-image": "^1.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

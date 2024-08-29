@@ -1,8 +1,30 @@
 .team {
+  position: relative;
   height: 100%;
   width: 50%;
-  border: 1px solid black;
-  background-color: rgb(182, 219, 176);
+  background-color: white;
   display: grid;
   place-items: center;
+  z-index: 50;
+}
+.blur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  filter: blur(30px);
+  display: grid;
+  place-items: center;
+}
+.blur > img {
+  position: relative;
+  z-index: -1;
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+}
+h5,
+h6 {
+  z-index: 100;
 }
