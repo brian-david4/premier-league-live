@@ -1,6 +1,6 @@
 import axios from "axios";
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Fixture } from "./Types/Fixture";
 import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
 import MatchSelectionMenu from "./Components/MatchSelectionMenu/MatchSelectionMenu";
@@ -11,10 +11,6 @@ const App = () => {
     fixtures.length > 1 ? fixtures[0].fixture.id : null
   );
   const [menuActive, setMenuActive] = useState(false);
-
-  useEffect(() => {
-    console.log(activeID);
-  }, [activeID]);
 
   const date = "2024-08-25";
 
