@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Fixture } from "../../Types/Fixture";
 import styles from "./styles.module.css";
 import { matchAnims } from "./anims";
+import TeamScore from "../TeamScore/TeamScore";
 
 interface ActiveMatchProps {
   fixture: Fixture | undefined;
@@ -16,14 +17,8 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
         animate="enter"
         className={styles.match}
       >
-        <div className={styles.team}>
-          <h5>{fixture?.goals.home}</h5>
-          <h6>{fixture?.teams.home.name}</h6>
-        </div>
-        <div className={styles.team}>
-          <h5>{fixture?.goals.away}</h5>
-          <h6>{fixture?.teams.away.name}</h6>
-        </div>
+        <TeamScore team={fixture?.teams.home} goals={fixture?.goals.home} />
+        <TeamScore team={fixture?.teams.away} goals={fixture?.goals.away} />
       </motion.div>
     </>
   );
