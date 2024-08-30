@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import styles from "./styles.module.css";
 import { paletteFromImage } from "palette-from-image";
-import { Colord } from "colord";
+import { motion } from "framer-motion";
+import styles from "./styles.module.css";
 
 interface TeamScoreProps {
   team:
@@ -11,16 +11,32 @@ interface TeamScoreProps {
 }
 
 const TeamScore = ({ team, goals }: TeamScoreProps) => {
-  const [colours, setColours] = useState<Colord[] | undefined>([]);
+  const blobRef = useRef<HTMLDivElement>(null!);
   const imgRef = useRef<HTMLImageElement>(null!);
+
+  const [colour, setColour] = useState<string>("");
 
   const onImageLoad = () => {
     const palette = paletteFromImage(imgRef.current, {
       colorCount: 4,
-      strategy: "kmeans",
-      pixelRatio: 0.008,
+      strategy: "quantize",
+      pixelRatio: 5,
     });
-    setColours(palette?.colors);
+
+    const dominantColors = palette?.colors;
+    // Drop colors that are too dark or too "boring"
+    dominantColors?.filter((color) => {
+      const { s, v } = color.toHsv();
+
+      // You should experiment with these values
+      return s > 0.2 && v > 0.2;
+    });
+
+    blobRef.current.style.background = dominantColors
+      ? `linear-gradient(${dominantColors[0].toHex()}, ${dominantColors[1].toHex()})`
+      : "";
+
+    setColour(dominantColors ? dominantColors[0].toHex() : "");
   };
 
   return (
@@ -34,22 +50,17 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
             crossOrigin="anonymous"
             style={{ display: "none" }}
           />
-          {colours?.map((c, idx) => {
-            return (
-              <div
-                key={`${c.toHex}_${idx}`}
-                className={styles.colour}
-                style={{
-                  backgroundColor: c.toRgbString(),
-                  zIndex: 100,
-                  height: `75px`,
-                  width: `75px`,
-                }}
-              >
-                hello
-              </div>
-            );
-          })}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 20,
+              ease: "linear",
+              repeat: Infinity,
+              repeatDelay: 0,
+            }}
+            className={styles.bgBlob}
+            ref={blobRef}
+          ></motion.div>
         </div>
         <h5>{goals}</h5>
         <h6>{team?.name}</h6>
