@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { paletteFromImage } from "palette-from-image";
 import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 import BackgroundBlob from "../BackgroundBlob/BackgroundBlob";
+import { RgbaColor } from "colord";
 
 interface TeamScoreProps {
   team:
@@ -12,8 +13,9 @@ interface TeamScoreProps {
 }
 
 const TeamScore = ({ team, goals }: TeamScoreProps) => {
-  const blobRef = useRef<HTMLDivElement>(null!);
   const imgRef = useRef<HTMLImageElement>(null!);
+
+  const [teamColours, setTeamColours] = useState<RgbaColor[]>([]);
 
   const onImageLoad = () => {
     const palette = paletteFromImage(imgRef.current, {
@@ -31,9 +33,7 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
       return s > 0.2 && v > 0.2;
     });
 
-    // blobRef.current.style.background = dominantColors
-    //   ? `linear-gradient(${dominantColors[0].toHex()}, ${dominantColors[1].toHex()})`
-    //   : "";
+    setTeamColours(dominantColors ? dominantColors.map((c) => c.toRgb()) : []);
   };
 
   return (
@@ -56,9 +56,8 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
               repeatDelay: 0,
             }}
             className={styles.bgBlob}
-            ref={blobRef}
           >
-            <BackgroundBlob />
+            <BackgroundBlob colourList={teamColours} />
           </motion.div>
         </div>
         <h5>{goals}</h5>
