@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { paletteFromImage } from "palette-from-image";
 import { motion } from "framer-motion";
 import styles from "./styles.module.css";
+import BackgroundBlob from "../BackgroundBlob/BackgroundBlob";
 
 interface TeamScoreProps {
   team:
@@ -13,8 +14,6 @@ interface TeamScoreProps {
 const TeamScore = ({ team, goals }: TeamScoreProps) => {
   const blobRef = useRef<HTMLDivElement>(null!);
   const imgRef = useRef<HTMLImageElement>(null!);
-
-  const [colour, setColour] = useState<string>("");
 
   const onImageLoad = () => {
     const palette = paletteFromImage(imgRef.current, {
@@ -32,11 +31,9 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
       return s > 0.2 && v > 0.2;
     });
 
-    blobRef.current.style.background = dominantColors
-      ? `linear-gradient(${dominantColors[0].toHex()}, ${dominantColors[1].toHex()})`
-      : "";
-
-    setColour(dominantColors ? dominantColors[0].toHex() : "");
+    // blobRef.current.style.background = dominantColors
+    //   ? `linear-gradient(${dominantColors[0].toHex()}, ${dominantColors[1].toHex()})`
+    //   : "";
   };
 
   return (
@@ -60,7 +57,9 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
             }}
             className={styles.bgBlob}
             ref={blobRef}
-          ></motion.div>
+          >
+            <BackgroundBlob />
+          </motion.div>
         </div>
         <h5>{goals}</h5>
         <h6>{team?.name}</h6>

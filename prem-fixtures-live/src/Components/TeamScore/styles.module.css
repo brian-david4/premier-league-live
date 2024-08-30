@@ -16,6 +16,7 @@
   filter: blur(40px);
   display: grid;
   place-items: center;
+  transform-origin: 50% 50%;
 }
 .blur > img {
   position: relative;
@@ -29,7 +30,8 @@ h6 {
   z-index: 100;
 }
 .bgBlob {
-  width: 75%;
+  position: relative;
+  width: 60%;
   aspect-ratio: 1/1;
   border-radius: 50%;
   opacity: 1;
