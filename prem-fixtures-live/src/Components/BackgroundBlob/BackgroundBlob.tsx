@@ -12,7 +12,7 @@ const BackgroundBlob = ({ colourList }: BackgroundBlobProps) => {
   });
   return (
     <>
-      <Canvas camera={{ position: [0.0, 0.0, 1.0] }}>
+      <Canvas camera={{ position: [0, 0, 1.0] }}>
         <Model colourList={colourListRgb} />
       </Canvas>
     </>
