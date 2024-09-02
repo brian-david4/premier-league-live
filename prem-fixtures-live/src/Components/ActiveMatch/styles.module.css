@@ -43,5 +43,5 @@
   width: 100%;
   display: flex;
   z-index: 26;
-  filter: blur(60px);
+  filter: blur(75px);
 }

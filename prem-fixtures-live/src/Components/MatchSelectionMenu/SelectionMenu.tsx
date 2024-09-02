@@ -21,17 +21,19 @@ const SelectionMenu = ({
         exit="exit"
         className={styles.menu}
       >
-        {fixtures.map((fixture, idx) => (
-          <div
-            key={`fx_${fixture.fixture.id}_${idx}`}
-            className={styles.fixture}
-            onClick={() => onFixtureClick(fixture.fixture.id)}
-          >
-            {fixture.teams.home.name}
-            vs
-            {fixture.teams.away.name}
-          </div>
-        ))}
+        <h3 className={styles.title}>fixtures</h3>
+        <div className={styles.fixtureArea}>
+          {fixtures.map((fixture, idx) => (
+            <div
+              key={`fx_${fixture.fixture.id}_${idx}`}
+              className={styles.fixture}
+              onClick={() => onFixtureClick(fixture.fixture.id)}
+            >
+              <b>{fixture.teams.home.name}</b> vs{" "}
+              <b>{fixture.teams.away.name}</b>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </>
   );

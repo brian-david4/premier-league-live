@@ -4,6 +4,11 @@
   --out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@font-face {
+  font-family: "Playground";
+  src: url("../fonts/PPPlayground-Thin.otf");
+}
+
 * {
   margin: 0;
   padding: 0;
