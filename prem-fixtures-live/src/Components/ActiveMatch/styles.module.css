@@ -1,15 +1,17 @@
 .match {
   position: relative;
   height: 100vh;
+  width: 100vw;
   left: 0;
   top: 0;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
   user-select: none;
+  background-color: white;
 }
+/* venue title styles */
 .venue {
   position: absolute;
   right: 2.5vw;
@@ -17,4 +19,29 @@
   font-size: 2rem;
   font-weight: 100;
   z-index: 51;
+}
+.goalsTeam {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25vw;
+  z-index: 100;
+  mix-blend-mode: difference;
+  color: white;
+}
+.goalsTeam > h5 {
+  font-size: 1.3rem;
+}
+.goalsTeam > h6 {
+  font-size: 1.1rem;
+}
+.blobs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: 26;
+  filter: blur(60px);
 }

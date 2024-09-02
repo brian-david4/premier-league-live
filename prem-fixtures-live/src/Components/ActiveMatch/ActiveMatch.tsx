@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Fixture } from "../../Types/Fixture";
 import styles from "./styles.module.css";
 import { matchAnims } from "./anims";
-import TeamScore from "../TeamScore/TeamScore";
+import TeamBlurBlob from "../TeamScore/TeamBlurBlob";
 
 interface ActiveMatchProps {
   fixture: Fixture | undefined;
@@ -20,8 +20,27 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
         <h4 className={styles.venue}>
           {fixture ? `${fixture?.fixture.venue.name}` : ""}
         </h4>
-        <TeamScore team={fixture?.teams.home} goals={fixture?.goals.home} />
-        <TeamScore team={fixture?.teams.away} goals={fixture?.goals.away} />
+
+        <div className={styles.goalsTeam}>
+          <h5>{fixture?.goals.home}</h5>
+          <h6>{fixture?.teams.home.name}</h6>
+        </div>
+
+        <div className={styles.goalsTeam}>
+          <h5>{fixture?.goals.away}</h5>
+          <h6>{fixture?.teams.away.name}</h6>
+        </div>
+
+        <div className={styles.blobs}>
+          <TeamBlurBlob
+            team={fixture?.teams.home}
+            goals={fixture?.goals.home}
+          />
+          <TeamBlurBlob
+            team={fixture?.teams.away}
+            goals={fixture?.goals.away}
+          />
+        </div>
       </motion.div>
     </>
   );

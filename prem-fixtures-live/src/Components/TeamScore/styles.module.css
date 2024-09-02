@@ -7,7 +7,11 @@
   place-items: center;
   z-index: 50;
 }
-.blur {
+.team > img {
+  height: 0;
+  width: 0;
+}
+/* .blur {
   position: absolute;
   left: 0;
   top: 0;
@@ -17,16 +21,9 @@
   display: grid;
   place-items: center;
   transform-origin: 50% 50%;
-}
-.blur > img {
-  position: relative;
-  z-index: -1;
-  height: 50%;
-  width: 50%;
-  object-fit: cover;
-}
-h5,
-h6 {
+  z-index: 50;
+} */
+.goalsTeam {
   z-index: 100;
 }
 .bgBlob {
