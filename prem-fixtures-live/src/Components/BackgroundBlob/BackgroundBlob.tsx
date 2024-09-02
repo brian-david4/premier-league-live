@@ -4,16 +4,20 @@ import { RgbaColor, RgbColor } from "colord";
 
 interface BackgroundBlobProps {
   colourList: RgbaColor[];
+  goals: number;
 }
 
-const BackgroundBlob = ({ colourList }: BackgroundBlobProps) => {
+const BackgroundBlob = ({ colourList, goals }: BackgroundBlobProps) => {
   const colourListRgb: RgbColor[] = colourList.map((c) => {
     return { r: c.r, g: c.g, b: c.b };
   });
   return (
     <>
-      <Canvas camera={{ position: [0, 0, 1.0] }}>
-        <Model colourList={colourListRgb} />
+      <Canvas
+        style={{ pointerEvents: "all" }}
+        camera={{ position: [0, 0, 1.0] }}
+      >
+        <Model goals={goals} colourList={colourListRgb} />
       </Canvas>
     </>
   );

@@ -3,14 +3,16 @@ export const vertex: string = `
 varying vec2 vUv;
 
 uniform float uTime;
+uniform float uMovement;
+uniform float uSpeed;
 
 void main() {
   vUv = uv;
 
   vec4 modelPosition = modelMatrix * vec4(position, 1.0);
   
-  modelPosition.y += sin(modelPosition.x * 5.0 + uTime * 3.0) * 0.1;
-  modelPosition.y += sin(modelPosition.z * 10.0 + uTime * 2.0) * 0.1;
+  modelPosition.y += sin(modelPosition.x * 6.0 + uTime * uSpeed) * 0.1;
+  modelPosition.y += sin(modelPosition.z * 10.0 + uTime * uMovement) * 0.1;
 
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;

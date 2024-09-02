@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Fixture } from "../../Types/Fixture";
 import styles from "./styles.module.css";
 import { matchAnims } from "./anims";
-import TeamBlurBlob from "../TeamScore/TeamBlurBlob";
+import TeamBlurBlob from "../TeamBlurBlob/TeamBlurBlob";
 
 interface ActiveMatchProps {
   fixture: Fixture | undefined;

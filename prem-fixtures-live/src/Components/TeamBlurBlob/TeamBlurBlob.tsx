@@ -12,7 +12,7 @@ interface TeamBlurBlobProps {
   goals: number | null | undefined;
 }
 
-const TeamBlurBlob = ({ team }: TeamBlurBlobProps) => {
+const TeamBlurBlob = ({ team, goals }: TeamBlurBlobProps) => {
   const imgRef = useRef<HTMLImageElement>(null!);
 
   const placeholderColour = { r: 100, g: 100, b: 100, a: 1 };
@@ -51,14 +51,14 @@ const TeamBlurBlob = ({ team }: TeamBlurBlobProps) => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{
-            duration: 50,
+            duration: goals && goals > 0 ? 50 - goals * 5 : 50,
             ease: "linear",
             repeat: Infinity,
             repeatDelay: 0,
           }}
           className={styles.bgBlob}
         >
-          <BackgroundBlob colourList={teamColours} />
+          <BackgroundBlob goals={goals ? goals : 0} colourList={teamColours} />
         </motion.div>
       </div>
     </>

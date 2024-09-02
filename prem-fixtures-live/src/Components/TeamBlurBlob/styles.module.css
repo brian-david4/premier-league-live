@@ -11,18 +11,6 @@
   height: 0;
   width: 0;
 }
-/* .blur {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  filter: blur(40px);
-  display: grid;
-  place-items: center;
-  transform-origin: 50% 50%;
-  z-index: 50;
-} */
 .goalsTeam {
   z-index: 100;
 }
