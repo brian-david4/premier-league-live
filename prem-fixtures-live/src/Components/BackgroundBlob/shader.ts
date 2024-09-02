@@ -5,9 +5,9 @@ varying vec2 vUv;
 uniform float uTime;
 
 void main() {
-    vUv = uv;
+  vUv = uv;
 
-    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+  vec4 modelPosition = modelMatrix * vec4(position, 1.0);
   
   modelPosition.y += sin(modelPosition.x * 5.0 + uTime * 3.0) * 0.1;
   modelPosition.y += sin(modelPosition.z * 10.0 + uTime * 2.0) * 0.1;
@@ -16,6 +16,7 @@ void main() {
   vec4 projectedPosition = projectionMatrix * viewPosition;
 
   gl_Position = projectedPosition;
+}
 `;
 
 export const fragment: string = `

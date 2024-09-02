@@ -12,7 +12,7 @@ const App = () => {
   );
   const [menuActive, setMenuActive] = useState(false);
 
-  const date = "2024-08-25";
+  const date = "2024-08-31";
 
   const apiUrl = "https://v3.football.api-sports.io/fixtures";
   const apiKey = "3a13cec925d9b171783834c1219c5867";

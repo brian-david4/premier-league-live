@@ -15,7 +15,10 @@ interface TeamScoreProps {
 const TeamScore = ({ team, goals }: TeamScoreProps) => {
   const imgRef = useRef<HTMLImageElement>(null!);
 
-  const [teamColours, setTeamColours] = useState<RgbaColor[]>([]);
+  const [teamColours, setTeamColours] = useState<RgbaColor[]>([
+    { r: 100, g: 100, b: 100, a: 1 },
+    { r: 100, g: 100, b: 100, a: 1 },
+  ]);
 
   const onImageLoad = () => {
     const palette = paletteFromImage(imgRef.current, {
@@ -50,7 +53,7 @@ const TeamScore = ({ team, goals }: TeamScoreProps) => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{
-              duration: 20,
+              duration: 50,
               ease: "linear",
               repeat: Infinity,
               repeatDelay: 0,
