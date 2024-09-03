@@ -27,8 +27,8 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
         </div>
 
         <div className={styles.goalsTeam}>
-          <h5>{fixture?.goals.away}</h5>
           <h6>{fixture?.teams.away.name}</h6>
+          <h5>{fixture?.goals.away}</h5>
         </div>
 
         <div className={styles.blobs}>
