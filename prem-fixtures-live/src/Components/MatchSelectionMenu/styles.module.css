@@ -42,8 +42,8 @@
   color: black;
 }
 .fixtureArea {
-  height: 50vh;
-  width: 65vw;
+  height: 55vh;
+  width: 75vw;
   margin-bottom: 5vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -55,7 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 0.5vw;
   cursor: pointer;
   padding: 5px;
 }
