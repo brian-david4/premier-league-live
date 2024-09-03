@@ -1,12 +1,22 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Mori ExtraLight";
+  letter-spacing: 0.1ch;
   --in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
   --out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @font-face {
   font-family: "Playground";
-  src: url("../fonts/PPPlayground-Thin.otf");
+  src: url("../fonts/PPPlayground-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mori Regular";
+  src: url("../fonts//PPMori-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Mori ExtraLight";
+  src: url("../fonts/PPMori-Extralight.otf") format("opentype");
 }
 
 * {
