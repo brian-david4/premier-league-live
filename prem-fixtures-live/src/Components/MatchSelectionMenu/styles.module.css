@@ -33,6 +33,7 @@
   align-items: center;
   justify-content: end;
   z-index: 99;
+  user-select: none;
 }
 .title {
   font-family: "Playground";

@@ -3,9 +3,11 @@ import { useState } from "react";
 import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
 import MatchSelectionMenu from "./Components/MatchSelectionMenu/MatchSelectionMenu";
 import useLastTenGames from "./hooks/useLastTenGames";
+import { AnimatePresence } from "framer-motion";
+import LoadingScreen from "./Components/LoadingScreen/LoadingScreen";
 
 const App = () => {
-  const { lastTenGames } = useLastTenGames("/fixtures", {
+  const { lastTenGames, isLoading } = useLastTenGames("/fixtures", {
     params: {
       league: 39,
       season: 2024,
@@ -24,32 +26,27 @@ const App = () => {
 
   return (
     <>
-      <main style={{ position: "relative" }}>
+      <main>
         <MatchSelectionMenu
           onFixtureClick={onFixtureClick}
           fixtures={lastTenGames}
           setMenuActive={(v) => setMenuActive(v)}
           menuActive={menuActive}
         />
-        <button
-          style={{ position: "fixed", left: "5vh", top: "10vh" }}
-          // onClick={fetchFixtures}
-        >
-          get results
-        </button>
-        <div>
-          {lastTenGames.length >= 1 && (
-            <ActiveMatch
-              fixture={
-                activeID
-                  ? lastTenGames.find(
-                      (fixture) => fixture.fixture.id === activeID
-                    )
-                  : lastTenGames[0]
-              }
-            />
-          )}
-        </div>
+        <AnimatePresence mode="wait">
+          {isLoading && <LoadingScreen />}
+        </AnimatePresence>
+        {lastTenGames.length >= 1 && (
+          <ActiveMatch
+            fixture={
+              activeID
+                ? lastTenGames.find(
+                    (fixture) => fixture.fixture.id === activeID
+                  )
+                : lastTenGames[0]
+            }
+          />
+        )}
       </main>
     </>
   );
