@@ -3,6 +3,7 @@
   letter-spacing: 0.1ch;
   --in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
   --out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --menu-blue: rgba(0, 121, 242, 0.2);
 }
 
 @font-face {

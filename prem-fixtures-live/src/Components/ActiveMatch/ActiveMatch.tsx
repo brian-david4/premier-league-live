@@ -31,6 +31,13 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
           <h5>{fixture?.goals.away}</h5>
         </div>
 
+        <div className={styles.elapsedTime}>
+          {fixture?.fixture.status.elapsed &&
+          fixture.fixture.status.elapsed < 90
+            ? fixture.fixture.status.elapsed
+            : fixture?.fixture.status.long}
+        </div>
+
         <div className={styles.blobs}>
           <TeamBlurBlob
             team={fixture?.teams.home}

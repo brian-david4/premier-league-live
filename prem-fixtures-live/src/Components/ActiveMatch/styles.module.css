@@ -45,3 +45,12 @@
   z-index: 26;
   filter: blur(75px);
 }
+.elapsedTime {
+  position: absolute;
+  bottom: 5vh;
+  z-index: 50;
+  opacity: 0.75;
+  display: grid;
+  place-items: center;
+  padding: 1vh;
+}
