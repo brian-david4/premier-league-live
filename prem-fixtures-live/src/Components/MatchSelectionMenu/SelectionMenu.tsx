@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 import { menuAnims } from "./anims";
 import { Fixture } from "../../Types/Fixture";
+import { useState } from "react";
+import WeekendFixturesMenu from "../WeekendFixturesMenu/WeekendFixturesMenu";
 
 interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
@@ -12,6 +14,8 @@ const SelectionMenu = ({
   fixtures,
   onFixtureClick,
 }: MatchSelectionMenuProps) => {
+  const [liveActive, setLiveActive] = useState(false);
+
   return (
     <>
       <motion.div
@@ -22,17 +26,21 @@ const SelectionMenu = ({
         className={styles.menu}
       >
         <h3 className={styles.title}>fixtures</h3>
+
+        <div
+          className={styles.matchStatusSelect}
+          onClick={() => setLiveActive(!liveActive)}
+        >
+          Live
+        </div>
+
         <div className={styles.fixtureArea}>
-          {fixtures.map((fixture, idx) => (
-            <div
-              key={`fx_${fixture.fixture.id}_${idx}`}
-              className={styles.fixture}
-              onClick={() => onFixtureClick(fixture.fixture.id)}
-            >
-              <b>{fixture.teams.home.name}</b> vs{" "}
-              <b>{fixture.teams.away.name}</b>
-            </div>
-          ))}
+          {!liveActive && (
+            <WeekendFixturesMenu
+              fixtures={fixtures}
+              onFixtureClick={onFixtureClick}
+            />
+          )}
         </div>
       </motion.div>
     </>

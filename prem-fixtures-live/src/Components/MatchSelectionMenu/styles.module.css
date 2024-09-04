@@ -43,6 +43,16 @@
   font-weight: 500;
   color: black;
 }
+.matchStatusSelect {
+  position: absolute;
+  right: 2.5vw;
+  top: 2.5vh;
+  padding: 0.5vw;
+  background-color: rgba(20, 17, 58, 0.23);
+  backdrop-filter: blur(5px);
+  border-radius: 3px;
+  color: rgb(246, 246, 170);
+}
 .fixtureArea {
   height: 55vh;
   width: 75vw;
