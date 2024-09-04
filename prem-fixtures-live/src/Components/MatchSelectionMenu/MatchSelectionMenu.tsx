@@ -5,13 +5,13 @@ import { Fixture } from "../../Types/Fixture";
 
 interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
-  fixtures: Fixture[];
+  weekendFixtures: Fixture[];
   setMenuActive: (v: boolean) => void;
   menuActive: boolean;
 }
 
 const MatchSelectionMenu = ({
-  fixtures,
+  weekendFixtures,
   onFixtureClick,
   setMenuActive,
   menuActive,
@@ -39,7 +39,10 @@ const MatchSelectionMenu = ({
       </p>
       <AnimatePresence mode="wait">
         {menuActive && (
-          <SelectionMenu onFixtureClick={onFixtureClick} fixtures={fixtures} />
+          <SelectionMenu
+            onFixtureClick={onFixtureClick}
+            weekendFixtures={weekendFixtures}
+          />
         )}
       </AnimatePresence>
     </>

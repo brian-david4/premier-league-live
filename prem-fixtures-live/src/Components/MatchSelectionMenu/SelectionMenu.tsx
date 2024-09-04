@@ -7,11 +7,11 @@ import WeekendFixturesMenu from "../WeekendFixturesMenu/WeekendFixturesMenu";
 
 interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
-  fixtures: Fixture[];
+  weekendFixtures: Fixture[];
 }
 
 const SelectionMenu = ({
-  fixtures,
+  weekendFixtures,
   onFixtureClick,
 }: MatchSelectionMenuProps) => {
   const [liveActive, setLiveActive] = useState(false);
@@ -60,7 +60,7 @@ const SelectionMenu = ({
           <AnimatePresence mode="wait">
             {!liveActive && (
               <WeekendFixturesMenu
-                fixtures={fixtures}
+                fixtures={weekendFixtures}
                 onFixtureClick={onFixtureClick}
               />
             )}
