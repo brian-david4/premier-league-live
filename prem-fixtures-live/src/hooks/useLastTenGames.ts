@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { AxiosRequestConfig, CanceledError } from "axios";
+import { CanceledError } from "axios";
 import { Fixture } from "../Types/Fixture";
 
-const useLastTenGames = (
-  endpoint: string,
-  requestConfig: AxiosRequestConfig
-) => {
+const useLastTenGames = () => {
   const [lastTenGames, setLastTenGames] = useState<Fixture[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const params = {
+    league: 39,
+    last: 10,
+  };
 
   useEffect(() => {
     const controller = new AbortController();
 
     apiClient
-      .get(endpoint, { signal: controller.signal, ...requestConfig })
+      .get("/fixtures", { signal: controller.signal, params })
       .then((res) => {
         setLastTenGames(res.data.response);
         setIsLoading(false);

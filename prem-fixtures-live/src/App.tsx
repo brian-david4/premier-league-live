@@ -7,13 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import LoadingScreen from "./Components/LoadingScreen/LoadingScreen";
 
 const App = () => {
-  const { lastTenGames, isLoading } = useLastTenGames("/fixtures", {
-    params: {
-      league: 39,
-      season: 2024,
-      last: 10,
-    },
-  });
+  const { lastTenGames, isLoading } = useLastTenGames();
   const [activeID, setActiveID] = useState<number | null>(
     lastTenGames.length > 1 ? lastTenGames[0].fixture.id : null
   );
