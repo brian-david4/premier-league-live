@@ -15,7 +15,7 @@
 .venue {
   position: absolute;
   right: 2.5vw;
-  top: 1vh;
+  top: 2vh;
   font-size: 2rem;
   font-weight: 100;
   z-index: 51;
@@ -45,12 +45,20 @@
   z-index: 26;
   filter: blur(75px);
 }
-.elapsedTime {
+.dateTime {
   position: absolute;
   bottom: 5vh;
   z-index: 50;
   opacity: 0.75;
   display: grid;
   place-items: center;
+}
+.elapsedTime {
   padding: 1vh;
+}
+.date > span {
+  margin-right: 0.5vw;
+  opacity: 0.5;
+  font-family: "Playground";
+  font-size: 1vw;
 }

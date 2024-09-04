@@ -3,7 +3,7 @@
   width: 100%;
   display: grid;
   place-items: center;
-  background-color: rgba(247, 197, 197, 0.434);
+  background-color: rgba(253, 248, 225, 0.434);
   backdrop-filter: blur(5px);
 }
 .loadingTitle {

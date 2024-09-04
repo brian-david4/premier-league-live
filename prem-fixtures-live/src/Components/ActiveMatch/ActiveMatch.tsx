@@ -31,11 +31,21 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
           <h5>{fixture?.goals.away}</h5>
         </div>
 
-        <div className={styles.elapsedTime}>
-          {fixture?.fixture.status.elapsed &&
-          fixture.fixture.status.elapsed < 90
-            ? fixture.fixture.status.elapsed
-            : fixture?.fixture.status.long}
+        <div className={styles.dateTime}>
+          <div className={styles.elapsedTime}>
+            {fixture?.fixture.status.elapsed &&
+            fixture.fixture.status.elapsed < 90
+              ? fixture.fixture.status.elapsed
+              : fixture?.fixture.status.long}
+          </div>
+          <div className={styles.date}>
+            {fixture?.fixture.date
+              .split("T")[0]
+              .split("-")
+              .map((d, idx) => {
+                return <span key={`dt_${idx}`}>{d}</span>;
+              })}
+          </div>
         </div>
 
         <div className={styles.blobs}>
