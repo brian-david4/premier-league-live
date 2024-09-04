@@ -4,14 +4,17 @@ import { menuAnims } from "./anims";
 import { Fixture } from "../../Types/Fixture";
 import { useState } from "react";
 import WeekendFixturesMenu from "../WeekendFixturesMenu/WeekendFixturesMenu";
+import LiveFixturesMenu from "../LiveFixturesMenu/LiveFixturesMenu";
 
 interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
   weekendFixtures: Fixture[];
+  liveFixtures: Fixture[];
 }
 
 const SelectionMenu = ({
   weekendFixtures,
+  liveFixtures,
   onFixtureClick,
 }: MatchSelectionMenuProps) => {
   const [liveActive, setLiveActive] = useState(false);
@@ -64,6 +67,9 @@ const SelectionMenu = ({
                 onFixtureClick={onFixtureClick}
               />
             )}
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            {liveActive && <LiveFixturesMenu fixtures={liveFixtures} />}
           </AnimatePresence>
         </div>
       </motion.div>

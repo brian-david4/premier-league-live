@@ -4,7 +4,7 @@ import ActiveMatch from "./Components/ActiveMatch/ActiveMatch";
 import MatchSelectionMenu from "./Components/MatchSelectionMenu/MatchSelectionMenu";
 import { AnimatePresence } from "framer-motion";
 import LoadingScreen from "./Components/LoadingScreen/LoadingScreen";
-import useAllGames from "./hooks/useAllgames";
+import useAllGames from "./hooks/useAllGames";
 
 const App = () => {
   const { allGames, lastTenGames, liveGames, isLoading } = useAllGames();
@@ -23,8 +23,9 @@ const App = () => {
     <>
       <main>
         <MatchSelectionMenu
-          onFixtureClick={onFixtureClick}
           weekendFixtures={lastTenGames}
+          liveFixtures={liveGames}
+          onFixtureClick={onFixtureClick}
           setMenuActive={(v) => setMenuActive(v)}
           menuActive={menuActive}
         />

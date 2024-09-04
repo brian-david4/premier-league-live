@@ -55,7 +55,6 @@
   cursor: pointer;
   display: grid;
   place-items: center;
-  background-color: aqua;
 }
 .statusTitle {
   position: absolute;
