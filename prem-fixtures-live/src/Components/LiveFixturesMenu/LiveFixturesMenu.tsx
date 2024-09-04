@@ -5,9 +5,13 @@ import { weekendMenu } from "../WeekendFixturesMenu/anims";
 
 interface LiveFixturesMenuProps {
   fixtures: Fixture[];
+  onFixtureClick: (f: number) => void;
 }
 
-const LiveFixturesMenu = ({ fixtures }: LiveFixturesMenuProps) => {
+const LiveFixturesMenu = ({
+  fixtures,
+  onFixtureClick,
+}: LiveFixturesMenuProps) => {
   return (
     <>
       <motion.div
@@ -15,10 +19,18 @@ const LiveFixturesMenu = ({ fixtures }: LiveFixturesMenuProps) => {
         initial="initial"
         animate="enter"
         exit="exit"
-        className={styles.area}
+        className={`${styles.area} ${fixtures.length > 1 ? styles.grid : ""}`}
       >
         {fixtures.map((f, idx) => {
-          return <span key={idx}>{f.teams.away.name}</span>;
+          return (
+            <div
+              onClick={() => onFixtureClick(f.fixture.id)}
+              className={styles.fixture}
+              key={idx}
+            >
+              <b>{f.teams.home.name}</b> vs <b>{f.teams.away.name}</b>
+            </div>
+          );
         })}
         {fixtures.length < 1 && (
           <div className={styles.errorBox}>No Matches Live . . .</div>

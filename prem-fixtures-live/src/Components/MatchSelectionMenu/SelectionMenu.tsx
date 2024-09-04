@@ -69,7 +69,12 @@ const SelectionMenu = ({
             )}
           </AnimatePresence>
           <AnimatePresence mode="wait">
-            {liveActive && <LiveFixturesMenu fixtures={liveFixtures} />}
+            {liveActive && (
+              <LiveFixturesMenu
+                onFixtureClick={onFixtureClick}
+                fixtures={liveFixtures}
+              />
+            )}
           </AnimatePresence>
         </div>
       </motion.div>

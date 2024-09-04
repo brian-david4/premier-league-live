@@ -5,6 +5,9 @@
   display: grid;
   place-items: center;
 }
+.grid {
+  grid-template-columns: repeat(3, 1fr);
+}
 .errorBox {
   height: 50%;
   width: 75%;
@@ -14,4 +17,14 @@
   background-color: rgba(0, 0, 0, 0.052);
   color: rgb(0, 0, 0);
   border-radius: 5px;
+}
+.fixture {
+  width: fit-content;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  cursor: pointer;
+  padding: 5px;
 }
