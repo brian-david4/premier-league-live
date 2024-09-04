@@ -25,7 +25,18 @@ const SelectionMenu = ({
         exit="exit"
         className={styles.menu}
       >
-        <h3 className={styles.title}>fixtures</h3>
+        <h3 className={styles.title}>
+          <span
+            style={{
+              position: "absolute",
+              left: "-7.5vw",
+              opacity: liveActive ? 0 : 1,
+            }}
+          >
+            fixtures
+          </span>
+          <span style={{ opacity: liveActive ? 1 : 0 }}>live</span>
+        </h3>
 
         <div
           className={styles.matchStatusSelect}
