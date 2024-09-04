@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import styles from "./styles.module.css";
 import { menuAnims } from "./anims";
 import { Fixture } from "../../Types/Fixture";
@@ -31,16 +31,29 @@ const SelectionMenu = ({
           className={styles.matchStatusSelect}
           onClick={() => setLiveActive(!liveActive)}
         >
-          Live
+          <span
+            style={{ opacity: liveActive ? 1 : 0 }}
+            className={styles.statusTitle}
+          >
+            Weekend Results
+          </span>
+          <span
+            style={{ opacity: liveActive ? 0 : 1 }}
+            className={styles.statusTitle}
+          >
+            Live Matches
+          </span>
         </div>
 
         <div className={styles.fixtureArea}>
-          {!liveActive && (
-            <WeekendFixturesMenu
-              fixtures={fixtures}
-              onFixtureClick={onFixtureClick}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {!liveActive && (
+              <WeekendFixturesMenu
+                fixtures={fixtures}
+                onFixtureClick={onFixtureClick}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </>
