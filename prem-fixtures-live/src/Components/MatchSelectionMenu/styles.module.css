@@ -71,3 +71,15 @@
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
 }
+
+@media (max-width: 500px) {
+  .title {
+    position: absolute;
+    top: 10vh;
+  }
+  .fixtureArea {
+    height: 70vh;
+    width: 90vw;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

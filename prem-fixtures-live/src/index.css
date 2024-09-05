@@ -26,6 +26,7 @@
   box-sizing: border-box;
 }
 body {
+  overflow: hidden;
   display: grid;
   place-items: center;
   height: 100vh;
