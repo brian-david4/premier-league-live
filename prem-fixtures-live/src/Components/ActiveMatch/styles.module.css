@@ -62,3 +62,27 @@
   font-family: "Playground";
   font-size: 1vw;
 }
+
+/* mobile */
+@media (max-width: 500px) {
+  .goalsTeam {
+    position: absolute;
+    bottom: 10vh;
+  }
+  .goalsTeam:nth-child(2) {
+    top: 10vh;
+  }
+  .date > span {
+    font-size: 22px;
+    margin-right: 2vw;
+    opacity: 0.9;
+  }
+  .blobs {
+    flex-direction: column-reverse;
+    align-items: center;
+    filter: blur(50px);
+  }
+  .venue {
+    font-size: 1.5rem;
+  }
+}

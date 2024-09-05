@@ -26,7 +26,7 @@ const TeamBlurBlob = ({ team, goals }: TeamBlurBlobProps) => {
     const palette = paletteFromImage(imgRef.current, {
       colorCount: 4,
       strategy: "quantize",
-      pixelRatio: 5,
+      pixelRatio: 0.8,
     });
 
     const dominantColors = palette?.colors;
