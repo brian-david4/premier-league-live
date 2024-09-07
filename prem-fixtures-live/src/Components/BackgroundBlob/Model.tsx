@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RgbColor } from "colord";
 import { fragment, vertex } from "./shader";
 import { useEffect, useRef } from "react";
