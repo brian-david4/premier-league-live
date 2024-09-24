@@ -13,6 +13,7 @@ const App = () => {
     lastTenGames.length > 1 ? lastTenGames[0].fixture.id : null
   );
   const [menuActive, setMenuActive] = useState(false);
+  const [liveActive, setLiveActive] = useState(false);
 
   const onFixtureClick = (f: number) => {
     setActiveID(f);
@@ -23,6 +24,8 @@ const App = () => {
     <>
       <main>
         <MatchSelectionMenu
+          liveActive={liveActive}
+          setLiveActive={(b) => setLiveActive(b)}
           weekendFixtures={lastTenGames}
           liveFixtures={liveGames}
           onFixtureClick={onFixtureClick}

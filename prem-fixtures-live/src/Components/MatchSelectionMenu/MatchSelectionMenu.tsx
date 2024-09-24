@@ -3,12 +3,14 @@ import SelectionMenu from "./SelectionMenu";
 import { AnimatePresence } from "framer-motion";
 import { Fixture } from "../../Types/Fixture";
 
-interface MatchSelectionMenuProps {
+export interface MatchSelectionMenuProps {
   onFixtureClick: (f: number) => void;
   weekendFixtures: Fixture[];
   liveFixtures: Fixture[];
-  setMenuActive: (v: boolean) => void;
-  menuActive: boolean;
+  setMenuActive?: (v: boolean) => void;
+  menuActive?: boolean;
+  liveActive: boolean;
+  setLiveActive: (v: boolean) => void;
 }
 
 const MatchSelectionMenu = ({
@@ -17,11 +19,13 @@ const MatchSelectionMenu = ({
   setMenuActive,
   menuActive,
   liveFixtures,
+  liveActive,
+  setLiveActive,
 }: MatchSelectionMenuProps) => {
   return (
     <>
       <p
-        onClick={() => setMenuActive(!menuActive)}
+        onClick={setMenuActive ? () => setMenuActive(!menuActive) : () => {}}
         className={styles.selectBtn}
       >
         <span
@@ -42,6 +46,8 @@ const MatchSelectionMenu = ({
       <AnimatePresence mode="wait">
         {menuActive && (
           <SelectionMenu
+            liveActive={liveActive}
+            setLiveActive={(b) => setLiveActive(b)}
             onFixtureClick={onFixtureClick}
             weekendFixtures={weekendFixtures}
             liveFixtures={liveFixtures}

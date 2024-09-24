@@ -1,23 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./styles.module.css";
 import { menuAnims } from "./anims";
-import { Fixture } from "../../Types/Fixture";
-import { useState } from "react";
 import WeekendFixturesMenu from "../WeekendFixturesMenu/WeekendFixturesMenu";
 import LiveFixturesMenu from "../LiveFixturesMenu/LiveFixturesMenu";
-
-interface MatchSelectionMenuProps {
-  onFixtureClick: (f: number) => void;
-  weekendFixtures: Fixture[];
-  liveFixtures: Fixture[];
-}
+import { MatchSelectionMenuProps } from "./MatchSelectionMenu";
 
 const SelectionMenu = ({
   weekendFixtures,
   liveFixtures,
   onFixtureClick,
+  liveActive,
+  setLiveActive,
 }: MatchSelectionMenuProps) => {
-  const [liveActive, setLiveActive] = useState(false);
+  // const [liveActive, setLiveActive] = useState(false);
 
   return (
     <>

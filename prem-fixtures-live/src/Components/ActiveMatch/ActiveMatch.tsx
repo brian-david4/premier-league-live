@@ -34,7 +34,7 @@ const ActiveMatch = ({ fixture }: ActiveMatchProps) => {
           <div className={styles.elapsedTime}>
             {fixture?.fixture.status.elapsed &&
             fixture.fixture.status.elapsed < 90
-              ? fixture.fixture.status.elapsed
+              ? `${fixture.fixture.status.elapsed}'`
               : fixture?.fixture.status.long}
           </div>
           <div className={styles.date}>
